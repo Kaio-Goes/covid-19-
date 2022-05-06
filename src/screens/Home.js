@@ -67,7 +67,7 @@ export default class Home extends Component {
         return(
             <View style={styles.container}>
                 <ImageBackground
-                    source={require("../images/mapafiltro.png")}
+                    source={require("../images/mapa1.png")}
                     style={styles.map}
                 >
                     <View style={styles.col}>
@@ -144,7 +144,7 @@ export default class Home extends Component {
 const styles = StyleSheet.create({
     container: {
         flex:1,
-        backgroundColor: "#080D21"
+        backgroundColor: "#191A1A"
     },
     cardContainer: {
         height: 150,
