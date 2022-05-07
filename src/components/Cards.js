@@ -17,7 +17,7 @@ export default class Cards extends Component {
                             color={this.props.bg == 'red' ? '#FFF' : 'red'}
                         />
                         <TouchableOpacity onPress={this.props.onPress}>
-                            <Icon
+                            <Icon2
                                 style={{marginLeft:50}}
                                 name="dots-vertical"
                                 size={30}

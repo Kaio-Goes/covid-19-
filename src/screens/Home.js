@@ -17,7 +17,7 @@ const DATA = [
     {
         id:1,
         title: "CORANAVIRUS CASES",
-        number: '1 838 456'
+        number: '1.838.56'
     },
     {
         id:2,
@@ -108,6 +108,7 @@ export default class Home extends Component {
                             horizontal
                         >
                             <Cards 
+                                onPress={() => this.props.navigation.navigate('Detail')}
                                 icon="md-pulse"
                                 title="TOTAL CASES"
                                 bg="red"
