@@ -33,7 +33,7 @@ export default class Deck extends Component {
                 } else if (gesture.dx < -SWIPE_THRESHOLD){
                     this.forceSwipe("left")
                 } else {
-                    this.resetPosition
+                    this.resetPosition();
                 }
             } ,
         });
@@ -55,7 +55,7 @@ export default class Deck extends Component {
         Animated.timing(this.state.position, {
             useNativeDriver: false, 
             toValue: {x, y: 0},
-            duration: SWIPE_OUT_DURATION,
+            duration: SWIPE_OUT_DURANTION,
         }).start(() => this.onSwipeComplete(direction));
     }
 
@@ -106,6 +106,7 @@ export default class Deck extends Component {
                                 styles.cardStyle,
                                 { zIndex: 99}
                             ]}
+                            {...this.state.panResponder.panHandlers}
                         >
                             {this.props.renderCard(item)}
                         </Animated.View>
