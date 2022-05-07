@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {Component, useEffect, useState } from 'react';
 import { 
     View, 
     Text, 
@@ -9,28 +9,97 @@ import {
 import {Button} from 'react-native-elements'
 import Icon from '@expo/vector-icons/Ionicons';
 import {ScrollView} from 'react-native-gesture-handler';
-import Deck from '../components/Deck';
-import Cards from '../components/Cards';
-import Buttons from '../components/Buttons';
+import Deck from '../../components/Deck';
+import Cards from '../../components/Cards';
+import Buttons from '../../components/Buttons';
+// import  axios  from 'axios';
+import api from '../../Services/Api'
+import { FlatList } from 'react-native-gesture-handler';
 
-const DATA = [
-    {
-        id:1,
-        title: "CORANAVIRUS CASES",
-        number: '1.838.56'
-    },
-    {
-        id:2,
-        title: "TOTAL DEATHS",
-        number: '1 29 863'
-    },
-    {
-        id:3,
-        title: "RECOVERED",
-        number: '838 456'
+
+
+// "NewConfirmed": 369551,
+// "TotalConfirmed": 515229199,
+// "NewDeaths": 1466,
+// "TotalDeaths": 6244683,
+// "NewRecovered": 0,
+// "TotalRecovered": 0,
+// "Date": "2022-05-07T16:15:47.508Z"
+
+// const url = "https://api.covid19api.com/summary";
+// const [report, setReport] = useState({})
+
+// useEffect(() =>{
+//     const getData = async() => {
+//         try {
+//             const response = await axios.get(url);
+//             const data = response.data.Global;
+//             setReport(data)
+//         } catch (error) {
+//             alert(error.message)
+//         }
+//     }
+//     })
+
+
+
+// const DATA = [
+//     {
+//         id:1,
+//         title: "CORANAVIRUS CASES",
+//         number: '1.838.56'
+//     },
+//     {
+//         id:2,
+//         title: "TOTAL DEATHS",
+//         number: '1 29 863'
+//     },
+//     {
+//         id:3,
+//         title: "RECOVERED",
+//         number: '838 456'
+//     }
+
+// ]
+
+// const Home = () => {
+    
+// }
+
+class Home extends Component  {
+
+    constructor(props){
+        super(props);
+        this.state = {
+            DATA : [
+                {
+                    id:1,
+                    title: "CORANAVIRUS CASES",
+                    number: this.componentDidMount
+                },
+                {
+                    id:2,
+                    title: "TOTAL DEATHS",
+                    number: '1 29 863'
+                },
+                {
+                    id:3,
+                    title: "RECOVERED",
+                    number: '838 456'
+                }
+            ]
+        }
+
     }
-]
-export default class Home extends Component {
+
+    async componentDidMount(){
+        const response = await api.get('summary')
+        const data = response.data.Global.NewConfirmed;
+        // console.log(data)
+        return data
+    }
+    
+
     renderCard(item){
     return(
         <View key={item.id} style={styles.cardContainer}>
@@ -67,7 +136,7 @@ export default class Home extends Component {
         return(
             <View style={styles.container}>
                 <ImageBackground
-                    source={require("../images/mapa1.png")}
+                    source={require("../../images/mapa1.png")}
                     style={styles.map}
                 >
                     <View style={styles.col}>
@@ -82,7 +151,7 @@ export default class Home extends Component {
                         </View>
                         <View styles={styles.avatarContainer}>
                             <Image 
-                                source={require('../images/logodollar.png')}
+                                source={require('../../images/logodollar.png')}
                                 style={styles.avatar}
                             />
                         </View>
@@ -90,7 +159,8 @@ export default class Home extends Component {
                     <Text style={styles.textDash}>CORONA DASH</Text>
 
                     <View style={styles.colContainer}>
-                        <Button  title = "Global" containerStyle={styles.buttonGlobal}
+                        <Button onPress={() => this.props.navigation.navigate('GlobalScreen')}
+                         title = "Global" containerStyle={styles.buttonGlobal}
                             buttonStyle={styles.textGlobal} />
                         <Button  title = 'País' containerStyle={styles.buttonPais} 
                          buttonStyle={styles.textPais}/>
@@ -102,7 +172,7 @@ export default class Home extends Component {
                     </View>
                 </ImageBackground>
                   <Deck
-                            data={DATA}
+                            data={this.state.DATA}
                             renderCard={this.renderCard}
                             renderNoMoreCards={this.renderNoMoreCards}
                     />
@@ -112,7 +182,7 @@ export default class Home extends Component {
                             horizontal
                         >
                             <Cards 
-                                onPress={() => this.props.navigation.navigate('Detail')}
+                                  onPress={() => this.props.navigation.navigate('Detail')}
                                 icon="md-pulse"
                                 title="TOTAL CASES"
                                 bg="red"
@@ -145,6 +215,10 @@ export default class Home extends Component {
         )
     }
 }       
+
+export default Home;
+
+  
 
 const styles = StyleSheet.create({
     container: {

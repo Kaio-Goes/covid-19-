@@ -1,7 +1,8 @@
 import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
-import Home from '../screens/Home';
+import Home from '../screens/HomoScreen/Home';
 import Detail from '../screens/Detail';
+import GlobalScreen from '../screens/GlobalScreen';
 
 const Stack = createStackNavigator();
 const screenOptionStyle = {
@@ -14,6 +15,10 @@ const HomeStackNavigator = () => {
             <Stack.Screen
                 name= "Home"
                 component={Home}
+            />
+             <Stack.Screen
+                name= "GlobalScreen"
+                component={GlobalScreen}
             />
             <Stack.Screen
                 name= "Detail"
