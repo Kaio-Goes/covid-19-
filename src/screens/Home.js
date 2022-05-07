@@ -183,6 +183,7 @@ const styles = StyleSheet.create({
         width: 90,
         marginLeft: -35,
         fontWeight: 'bold',
+        marginTop: 20,
     },
     noCard: {
         marginBottom: 10,
