@@ -4,9 +4,9 @@ import {
     Text, 
     StyleSheet, 
     Image, 
-    Button, 
     ImageBackground 
 } from 'react-native';
+import {Button} from 'react-native-elements'
 import Icon from '@expo/vector-icons/Ionicons';
 import {ScrollView} from 'react-native-gesture-handler';
 import Deck from '../components/Deck';
@@ -90,8 +90,12 @@ export default class Home extends Component {
                     <Text style={styles.textDash}>CORONA DASH</Text>
 
                     <View style={styles.colContainer}>
-                        <Text style={styles.textGlobal}>GLOBAL</Text>
-                        <Text style={styles.textRussia}>RUSSIA</Text>
+                        <Button  title = "Global" containerStyle={styles.buttonGlobal}
+                            buttonStyle={styles.textGlobal} />
+                        <Button  title = 'País' containerStyle={styles.buttonPais} 
+                         buttonStyle={styles.textPais}/>
+                        {/* <Text style={styles.textGlobal}>GLOBAL</Text> */}
+                        {/* <Text style={styles.textRussia}>RUSSIA</Text> */}
                         <View style={styles.reloadContainer}>
                             <Icon name="md-refresh" size={24} color="red"/>
                         </View>
@@ -226,16 +230,24 @@ const styles = StyleSheet.create({
         marginTop: 40,
         alignItems: 'center'
     },
+    buttonGlobal: {
+        marginRight: 30,
+        borderRadius: 10
+    },
+    buttonPais: {
+        borderRadius: 10,
+    },  
     textGlobal: {
         fontWeight: "bold",
         fontSize: 16,
-        color: 'red'
+        paddingHorizontal: 30,
+        backgroundColor: '#2b3240'
     },
-    textRussia: {
+    textPais: {
         fontWeight: 'bold',
         fontSize: 16,
         paddingHorizontal: 30,
-        color: '#6a706e',
+        backgroundColor: '#2b3240'
     }, 
     reloadContainer: {
         backgroundColor: "#FFF",
