@@ -75,17 +75,17 @@ class Home extends Component  {
                 {
                     id:1,
                     title: "CORANAVIRUS CASES",
-                    number: this.componentDidMount
+                    number: "515 286 004"
                 },
                 {
                     id:2,
                     title: "TOTAL DEATHS",
-                    number: '1 29 863'
+                    number: '6 244 867'
                 },
                 {
                     id:3,
                     title: "RECOVERED",
-                    number: '838 456'
+                    number: '0'
                 }
             ]
         }
@@ -94,9 +94,11 @@ class Home extends Component  {
 
     async componentDidMount(){
         const response = await api.get('summary')
-        const data = response.data.Global.NewConfirmed;
+        const data =  response.data.Global               ;
         // console.log(data)
-        return data
+        return {
+            data: data
+        }
     }
     
 
@@ -160,9 +162,9 @@ class Home extends Component  {
 
                     <View style={styles.colContainer}>
                         <Button onPress={() => this.props.navigation.navigate('GlobalScreen')}
-                         title = "Global" containerStyle={styles.buttonGlobal}
+                         title = "GLOBAL" containerStyle={styles.buttonGlobal}
                             buttonStyle={styles.textGlobal} />
-                        <Button  title = 'País' containerStyle={styles.buttonPais} 
+                        <Button  title = 'PAÍS' containerStyle={styles.buttonPais} 
                          buttonStyle={styles.textPais}/>
                         {/* <Text style={styles.textGlobal}>GLOBAL</Text> */}
                         {/* <Text style={styles.textRussia}>RUSSIA</Text> */}
@@ -184,24 +186,24 @@ class Home extends Component  {
                             <Cards 
                                   onPress={() => this.props.navigation.navigate('Detail')}
                                 icon="md-pulse"
-                                title="TOTAL CASES"
+                                title="NEW CASES"
                                 bg="red"
-                                number="113 329"
+                                number="426 356"
                             />
                             <Cards 
                                 icon="ios-git-network"
                                 title="RECOVERED"
                                 bg="#FFF"
-                                number="442 329"
+                                number="0"
                             />
                             <Cards 
                                 icon="ios-heart-dislike"
                                 title="DEATH CASES"
                                 bg="#FFF"
-                                number="113 329"
+                                number="1650"
                             />
                         </ScrollView>
-                        <View style={{marginBottom:34}}>
+                        {/* <View style={{marginBottom:34}}>
                             <Buttons 
                                 name="ASYMPTOMATIC"
                                 number="1 778"
@@ -210,7 +212,7 @@ class Home extends Component  {
                                 name="SYMPTOMATIC"
                                 number="1 578"
                             />
-                        </View>
+                        </View> */}
             </View>
         )
     }
@@ -223,7 +225,7 @@ export default Home;
 const styles = StyleSheet.create({
     container: {
         flex:1,
-        backgroundColor: "#191A1A"
+        backgroundColor: "#191A1A",
     },
     cardContainer: {
         height: 150,
@@ -250,7 +252,7 @@ const styles = StyleSheet.create({
     number: {
         color: "#FFF",
         width: 100,
-        fontSize: 22,
+        fontSize: 14,
         fontWeight: "bold",
         marginTop: -10,
     },

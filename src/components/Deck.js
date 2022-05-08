@@ -104,7 +104,7 @@ export default class Deck extends Component {
                             style={[
                                 this.getCardStyle(),
                                 styles.cardStyle,
-                                { zIndex: 99}
+                                { zIndex: 99},
                             ]}
                             {...this.state.panResponder.panHandlers}
                         >
@@ -133,6 +133,7 @@ export default class Deck extends Component {
 const styles = {
     cardStyle: {
         position: "absolute",
-        width: SCREEN_WIDTH
+        width: SCREEN_WIDTH,
+        
     }
 }
