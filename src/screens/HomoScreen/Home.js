@@ -94,7 +94,7 @@ class Home extends Component  {
 
     async componentDidMount(){
         const response = await api.get('summary')
-        const data =  response.data.Global               ;
+        const data =  response.data.Countries               ;
         // console.log(data)
         return {
             data: data
@@ -162,10 +162,11 @@ class Home extends Component  {
 
                     <View style={styles.colContainer}>
                         <Button onPress={() => this.props.navigation.navigate('GlobalScreen')}
-                         title = "GLOBAL" containerStyle={styles.buttonGlobal}
+                            title = "GLOBAL" containerStyle={styles.buttonGlobal}
                             buttonStyle={styles.textGlobal} />
-                        <Button  title = 'PAÍS' containerStyle={styles.buttonPais} 
-                         buttonStyle={styles.textPais}/>
+                        <Button   onPress={() => this.props.navigation.navigate('ListCountries')}
+                            title = 'PAÍS' containerStyle={styles.buttonPais} 
+                            buttonStyle={styles.textPais}/>
                         {/* <Text style={styles.textGlobal}>GLOBAL</Text> */}
                         {/* <Text style={styles.textRussia}>RUSSIA</Text> */}
                         <View style={styles.reloadContainer}>

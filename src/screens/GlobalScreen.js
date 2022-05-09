@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, {useState} from 'react';
 import { useEffect } from 'react';
-import {View, Image,StyleSheet, Text} from 'react-native';
+import {View, Image,StyleSheet, Text, ImageBackground} from 'react-native';
 import {Card, ListItem, Button, Icon} from 'react-native-elements'
 
 // "NewConfirmed": 369551,
@@ -22,6 +22,7 @@ const GlobalScreen = () => {
                 const response = await axios.get(url);
                 const data = response.data.Global;
                 setReport(data)
+                console.log(data)
             }catch (error) {
                 alert(error.message);
             }
@@ -32,6 +33,22 @@ const GlobalScreen = () => {
 
     return (
         <View style={styles.container}>
+              <ImageBackground
+                    source={require("../images/mapa1.png")}
+                    style={styles.map}
+                >
+                    <View style={styles.col}>
+                        <View style={{width: '50%'}}>
+                        </View>
+                        <View styles={styles.avatarContainer}>
+                            <Image 
+                                source={require('../images/logodollar.png')}
+                                style={styles.avatar}
+                            />
+                        </View>
+                    </View>
+                    <Text style={styles.textDash}>CORONA DASH</Text>
+                </ImageBackground>
             <Card containerStyle={styles.card}>
             <Card.Title style={styles.cardTitle}>REPORT COVID-19</Card.Title>
                 <Card.Divider/>
@@ -74,7 +91,38 @@ export default GlobalScreen;
 
 const styles = StyleSheet.create({
     container:{
+        flex:1, 
         backgroundColor: '#191A1A'
+    },
+    map: {
+        height: 200,
+        paddingTop: 25,
+        paddingHorizontal: 20,
+        marginBottom: 15
+    },
+    col: {
+        flexDirection: 'row',
+    },
+    minusIcon: {
+        marginTop: -20,
+        marginLeft: 5,
+    }, 
+    avatarContainer: {
+        width: "50%",
+        alignItems: "flex-end",
+    },
+    avatar: {
+        width: 45,
+        height: 45,
+        borderRadius: 20,
+        marginLeft: 130
+    },
+    textDash: {
+        color: "#FFF",
+        fontSize: 20,
+        alignSelf: 'center',
+        marginTop: 15,
+        fontWeight: 'bold'
     },
     card: {
         backgroundColor: '#191A1A'
