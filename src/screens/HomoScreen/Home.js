@@ -75,12 +75,12 @@ class Home extends Component  {
                 {
                     id:1,
                     title: "CORANAVIRUS CASES",
-                    number: "515 286 004"
+                    number: "515 613 295"
                 },
                 {
                     id:2,
                     title: "TOTAL DEATHS",
-                    number: '6 244 867'
+                    number: '6 245 932'
                 },
                 {
                     id:3,
@@ -189,7 +189,7 @@ class Home extends Component  {
                                 icon="md-pulse"
                                 title="NEW CASES"
                                 bg="red"
-                                number="426 356"
+                                number="233 942"
                             />
                             <Cards 
                                 icon="ios-git-network"
@@ -201,7 +201,7 @@ class Home extends Component  {
                                 icon="ios-heart-dislike"
                                 title="DEATH CASES"
                                 bg="#FFF"
-                                number="1650"
+                                number="865"
                             />
                         </ScrollView>
                         {/* <View style={{marginBottom:34}}>
