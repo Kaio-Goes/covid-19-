@@ -33,7 +33,6 @@ export default class Detail extends Component {
                 </View>
                 <View style={styles.locationContainer}>
                     <Text style={styles.textGlobal}>GLOBAL</Text>
-                    <Text style={styles.textRussia}>RUSSIA</Text>
                     <View style={styles.reloadContainer}>
                         <Icon
                             name="md-refresh"
